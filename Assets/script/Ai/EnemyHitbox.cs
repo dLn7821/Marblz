@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyHitbox : MonoBehaviour
 {
     public float damage;
-    public Estats stats;
+    public Stats stats;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
