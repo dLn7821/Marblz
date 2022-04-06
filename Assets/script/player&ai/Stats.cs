@@ -1,46 +1,95 @@
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Stats : MonoBehaviour
 {
 
+    public Text thealth;
     public GameObject dead;
-    public float enemyhealth;
+    public GameObject Char;
+    public float health;
 
-
-    public float enemydefense;
-
-    private float enemycurHealth;
+public static float phealth;
+    public float defense;
+public static float pdefense=2;
+    private  float curHealth;
+     private static float pcurHealth;
+    public void Check(Attribute attribute, player Player)
+    {
+        
+        if(Char.tag=="Player")
+        {
+        if (string.Concat(attribute.type) == "Health")
+        {
+            phealth += attribute.value.ModifiedValue;
+        }
+        if (string.Concat(attribute.type) == "Defense")
+        {
+            pdefense += attribute.value.ModifiedValue;
+        }
+        }
+    }
     private void Start()
     {
 
-        enemycurHealth = enemyhealth;
+        curHealth = health;
+         pcurHealth = phealth;
 
     }
-
-    public void enemyDamage(Transform edamageOBJ, float edamageAmount)
+    private void Update()
     {
-        edamageOBJ.GetComponent<Stats>().enemyTakeDamage(edamageAmount);
-        Debug.Log("Health: " + enemycurHealth);
+         thealth.text=pcurHealth.ToString();
     }
-    public void enemyTakeDamage(float amount)
+
+    public void Damage(Transform edamageOBJ, float edamageAmount)
     {
-        if (enemydefense < amount)
+        edamageOBJ.GetComponent<Stats>().TakeDamage(edamageAmount);
+        Debug.Log("Health: " + curHealth);
+    }
+     public void PDamage(Transform edamageOBJ, float edamageAmount)
+    {
+        edamageOBJ.GetComponent<Stats>().TakeDamage(edamageAmount);
+        Debug.Log("Health: " + pcurHealth);
+       
+    }
+    public void TakeDamage(float amount)
+    {
+        if (defense < amount)
         {
-            enemycurHealth -= (amount - enemydefense);
+            curHealth -= (amount - defense);
 
         }
-        if (enemycurHealth <= 0)
+        if (curHealth <= 0)
         {
             Die();
 
         }
     }
+     public void pTakeDamage(float amount)
+    {
+        if (pdefense < amount)
+        {
+            pcurHealth -= (amount - pdefense);
+
+        }
+        if (pcurHealth <= 0)
+        {
+            pDie();
+
+        }
+    }
+    private void pDie()
+    {
+        dead.SetActive(true);
+         Time.timeScale = 0f;
+        Destroy(gameObject);
+    }
     private void Die()
     {
-        // dead.SetActive(true);
-        // Time.timeScale = 0f;
+       
         Destroy(gameObject);
     }
 }

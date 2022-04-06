@@ -9,10 +9,10 @@ public class player : MonoBehaviour
 
     public InventoryObject inventory;
     public InventoryObject equipment;
-    public Text hp, damage;
-    public int Damage;
-    public int Health;
-    public int Defense;
+    public Text damage, name;
+    public static int Damage;
+    public static int Health;
+    public static int Defense;
     public Attribute[] attributes;
     private void Start()
     {
@@ -27,7 +27,7 @@ public class player : MonoBehaviour
         }
         if (DBManager.LoggedIn)
         {
-            damage.text = DBManager.username;
+            name.text = DBManager.username;
         }
     }
 
@@ -118,23 +118,23 @@ public class player : MonoBehaviour
 
     public void AttributeModified(Attribute attribute)
     {
+    
         Debug.Log(string.Concat(attribute.type, " was updated! Value is now ", attribute.value.ModifiedValue));
-        if (string.Concat(attribute.type) == "Damage")
-        {
-            Damage = attribute.value.ModifiedValue;
-        }
-        if (string.Concat(attribute.type) == "Health")
-        {
-            Health = attribute.value.ModifiedValue;
-        }
-        if (string.Concat(attribute.type) == "Defense")
-        {
-            Defense = attribute.value.ModifiedValue;
-        }
-        hp.text = Damage.ToString();
-        PStats.playerhealth += Health;
-        PStats.playerdefense += Defense;
-        PlayerHitBox.damage += Damage;
+        // if (string.Concat(attribute.type) == "Damage")
+        // {
+        //     Damage = attribute.value.ModifiedValue;
+        // }
+        // if (string.Concat(attribute.type) == "Health")
+        // {
+        //     Health = attribute.value.ModifiedValue;
+        // }
+        // if (string.Concat(attribute.type) == "Defense")
+        // {
+        //     Defense = attribute.value.ModifiedValue;
+        // }
+      damage.text = Damage.ToString();
+       
+        
     }
 
     private void OnApplicationQuit()

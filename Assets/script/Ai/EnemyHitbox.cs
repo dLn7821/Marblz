@@ -12,7 +12,7 @@ public class EnemyHitbox : MonoBehaviour
         Debug.Log("bz");
         if (other.gameObject.tag == "Player")
         {
-            stats.enemyDamage(other.transform, damage);
+            stats.Damage(other.transform, damage);
             Debug.Log(damage);
         }
     }
