@@ -15,7 +15,7 @@ public class Estats : MonoBehaviour
 
     public void enemyDamage(Transform damageOBJ, float damageAmount)
     {
-        damageOBJ.GetComponent<Stats>().enemyTakeDamage(damageAmount);
+        damageOBJ.GetComponent<Estats>().enemyTakeDamage(damageAmount);
         Debug.Log("Health: " + enemycurHealth);
     }
     public void enemyTakeDamage(float amount)

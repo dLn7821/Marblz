@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PStats : MonoBehaviour
-{   
+{
     public GameObject dead;
     public static float playerhealth;
 
@@ -16,10 +16,10 @@ public class PStats : MonoBehaviour
     }
     public void playerDamage(Transform damageOBJ, float damageAmount)
     {
-        damageOBJ.GetComponent<Stats>().playerTakeDamage(damageAmount);
+        damageOBJ.GetComponent<PStats>().playerTakeDamage(damageAmount);
         Debug.Log("Health: " + playercurHealth);
     }
- 
+
     public void playerTakeDamage(float amount)
     {
         if (playerdefense < amount)

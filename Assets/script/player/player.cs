@@ -11,7 +11,7 @@ public class player : MonoBehaviour
     public InventoryObject equipment;
     public Text hp, damage;
     public int Damage;
-    public int Stamina;
+    public int Health;
     public int Defense;
     public Attribute[] attributes;
     private void Start()
@@ -123,17 +123,17 @@ public class player : MonoBehaviour
         {
             Damage = attribute.value.ModifiedValue;
         }
-        if (string.Concat(attribute.type) == "Stamina")
+        if (string.Concat(attribute.type) == "Health")
         {
-            Stamina = attribute.value.ModifiedValue;
+            Health = attribute.value.ModifiedValue;
         }
         if (string.Concat(attribute.type) == "Defense")
         {
             Defense = attribute.value.ModifiedValue;
         }
         hp.text = Damage.ToString();
-        Stats.playerhealth += Stamina;
-        Stats.playerdefense += Defense;
+        PStats.playerhealth += Health;
+        PStats.playerdefense += Defense;
         PlayerHitBox.damage += Damage;
     }
 

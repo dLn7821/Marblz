@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerHitBox : MonoBehaviour
 {
     public static float damage;
-    public Stats stats;
+    public PStats stats;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
