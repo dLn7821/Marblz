@@ -6,52 +6,46 @@ using UnityEngine.UI;
 
 public class Stats : MonoBehaviour
 {
-
-    public Text thealth;
     public GameObject dead;
     public GameObject Char;
     public float health;
-
+    public float h;
     public static float phealth;
+    public float ph;
     public float defense;
     public static float pdefense;
     private float curHealth;
     public static float pcurHealth;
-    public void Check(Attribute attribute, player Player)
-    {
-
-        if (Char.tag == "Player")
-        {
-            if (string.Concat(attribute.type) == "Health")
-            {
-                phealth += attribute.value.ModifiedValue;
-            }
-            if (string.Concat(attribute.type) == "Defense")
-            {
-                pdefense += attribute.value.ModifiedValue;
-            }
-        }
-    }
     private void Start()
     {
 
-        curHealth = health;
-        pcurHealth = phealth;
+        health = curHealth;
+        phealth = pcurHealth + ph;
 
     }
-    private void Update()
-    {
-        thealth.text = pcurHealth.ToString();
-    }
+    // public void get(Attribute attribute)
+    // {
+    //     if (string.Concat(attribute.type) == "Health")
+    //     {
+
+    //         phealth += attribute.value.ModifiedValue;
+    //         Debug.Log(" hápé: " + phealth);
+    //     }
+
+    //     if (string.Concat(attribute.type) == "Defense")
+    //     {
+    //         pdefense += attribute.value.ModifiedValue;
+    //     }
+    // }
 
     public void Damage(Transform edamageOBJ, float edamageAmount)
     {
         edamageOBJ.GetComponent<Stats>().TakeDamage(edamageAmount);
-        Debug.Log("Health: " + curHealth);
+        Debug.Log(" enemy Health: " + curHealth);
     }
-    public void PDamage(Transform pdamageOBJ, float pdamageAmount)
+    public void PDamage(Transform damageOBJ, float damageAmount)
     {
-        pdamageOBJ.GetComponent<Stats>().TakeDamage(pdamageAmount);
+        damageOBJ.GetComponent<Stats>().TakeDamage(damageAmount);
         Debug.Log("player Health: " + pcurHealth);
 
     }
@@ -68,28 +62,25 @@ public class Stats : MonoBehaviour
 
         }
     }
-    public void pTakeDamage(float amount)
+    public void pTakeDamage(float pamount)
     {
-        if (pdefense < amount)
+        if (pdefense < pamount)
         {
-            pcurHealth -= (amount - pdefense);
+            pcurHealth -= (pamount - pdefense);
 
         }
         if (pcurHealth <= 0)
         {
-            pDie();
+            Die();
 
         }
     }
-    private void pDie()
-    {
-        dead.SetActive(true);
-        Time.timeScale = 0f;
-        Destroy(gameObject);
-    }
+
     private void Die()
     {
 
-        Destroy(gameObject);
+        dead.SetActive(true);
+        Time.timeScale = 0f;
+        Destroy(Char);
     }
 }

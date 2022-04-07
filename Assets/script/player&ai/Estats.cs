@@ -5,7 +5,7 @@ using UnityEngine;
 public class Estats : MonoBehaviour
 {
     public float enemyhealth;
-
+    public GameObject Char;
     public float enemydefense;
     private float enemycurHealth;
     private void Start()
@@ -32,6 +32,6 @@ public class Estats : MonoBehaviour
     }
     private void Die()
     {
-        Destroy(gameObject);
+        Destroy(Char);
     }
 }

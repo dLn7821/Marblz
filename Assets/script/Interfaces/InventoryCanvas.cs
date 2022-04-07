@@ -10,6 +10,10 @@ public class InventoryCanvas : MonoBehaviour
     public static bool isOpenedinventory;
     public static bool isOpenedbag;
 
+    private void OnApplicationOpen()
+    {
+        StartCoroutine(Inventory());
+    }
     private void activate()
     {
         inventory.SetActive(true);

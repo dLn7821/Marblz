@@ -122,10 +122,6 @@ public class player : MonoBehaviour
     {
 
         Debug.Log(string.Concat(attribute.type, " was updated! Value is now ", attribute.value.ModifiedValue));
-        if (string.Concat(attribute.type) == "Damage")
-        {
-            PlayerHitBox.damage = attribute.value.ModifiedValue;
-        }
         // if (string.Concat(attribute.type) == "Health")
         // {
         //     Stats.phealth = attribute.value.ModifiedValue;
@@ -134,7 +130,7 @@ public class player : MonoBehaviour
         // {
         //     Stats.pdefense = attribute.value.ModifiedValue;
         // }
-        damage.text = PlayerHitBox.damage.ToString();
+
 
 
     }

@@ -5,38 +5,49 @@ using UnityEngine;
 public class PStats : MonoBehaviour
 {
     public GameObject dead;
-    public static float playerhealth;
+    public GameObject Char;
 
-    public static float playerdefense;
-    private static float playercurHealth;
+    public static float phealth;
+
+    public static float pdefense;
+
+    public static float pcurHealth;
     private void Start()
     {
-        playercurHealth = playerhealth;
+
+
+        phealth = pcurHealth;
 
     }
-    public void playerDamage(Transform damageOBJ, float damageAmount)
+
+
+    public void PDamage(Transform damageOBJ, float damageAmount)
     {
-        damageOBJ.GetComponent<PStats>().playerTakeDamage(damageAmount);
-        Debug.Log("Health: " + playercurHealth);
+        damageOBJ.GetComponent<Stats>().TakeDamage(damageAmount);
+        Debug.Log("player Health: " + pcurHealth);
+
     }
 
-    public void playerTakeDamage(float amount)
+
+    public void pTakeDamage(float pamount)
     {
-        if (playerdefense < amount)
+        if (pdefense < pamount)
         {
-            playercurHealth -= (amount - playerdefense);
+            pcurHealth -= (pamount - pdefense);
+
         }
-        if (playercurHealth <= 0)
+        if (pcurHealth <= 0)
         {
             Die();
 
-
         }
     }
+
     private void Die()
     {
+
         dead.SetActive(true);
         Time.timeScale = 0f;
-        Destroy(gameObject);
+        Destroy(Char);
     }
 }
