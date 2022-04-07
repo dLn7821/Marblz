@@ -126,14 +126,14 @@ public class player : MonoBehaviour
         {
             PlayerHitBox.damage = attribute.value.ModifiedValue;
         }
-        if (string.Concat(attribute.type) == "Health")
-        {
-            Stats.phealth = attribute.value.ModifiedValue;
-        }
-        if (string.Concat(attribute.type) == "Defense")
-        {
-            Stats.pdefense = attribute.value.ModifiedValue;
-        }
+        // if (string.Concat(attribute.type) == "Health")
+        // {
+        //     Stats.phealth = attribute.value.ModifiedValue;
+        // }
+        // if (string.Concat(attribute.type) == "Defense")
+        // {
+        //     Stats.pdefense = attribute.value.ModifiedValue;
+        // }
         damage.text = PlayerHitBox.damage.ToString();
 
 

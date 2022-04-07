@@ -16,22 +16,22 @@ public class Stats : MonoBehaviour
     public float defense;
     public static float pdefense;
     private float curHealth;
-    private static float pcurHealth;
-    // public void Check(Attribute attribute, player Player)
-    // {
+    public static float pcurHealth;
+    public void Check(Attribute attribute, player Player)
+    {
 
-    //     if (Char.tag == "Player")
-    //     {
-    //         if (string.Concat(attribute.type) == "Health")
-    //         {
-    //             phealth += attribute.value.ModifiedValue;
-    //         }
-    //         if (string.Concat(attribute.type) == "Defense")
-    //         {
-    //             pdefense += attribute.value.ModifiedValue;
-    //         }
-    //     }
-    // }
+        if (Char.tag == "Player")
+        {
+            if (string.Concat(attribute.type) == "Health")
+            {
+                phealth += attribute.value.ModifiedValue;
+            }
+            if (string.Concat(attribute.type) == "Defense")
+            {
+                pdefense += attribute.value.ModifiedValue;
+            }
+        }
+    }
     private void Start()
     {
 
@@ -49,10 +49,10 @@ public class Stats : MonoBehaviour
         edamageOBJ.GetComponent<Stats>().TakeDamage(edamageAmount);
         Debug.Log("Health: " + curHealth);
     }
-    public void PDamage(Transform edamageOBJ, float edamageAmount)
+    public void PDamage(Transform pdamageOBJ, float pdamageAmount)
     {
-        edamageOBJ.GetComponent<Stats>().TakeDamage(edamageAmount);
-        Debug.Log("Health: " + pcurHealth);
+        pdamageOBJ.GetComponent<Stats>().TakeDamage(pdamageAmount);
+        Debug.Log("player Health: " + pcurHealth);
 
     }
     public void TakeDamage(float amount)
