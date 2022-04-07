@@ -9,7 +9,9 @@ public class player : MonoBehaviour
 
     public InventoryObject inventory;
     public InventoryObject equipment;
-    public Text damage, name;
+    public Text damage;
+
+    public Text name;
     public static int Damage;
     public static int Health;
     public static int Defense;
@@ -118,23 +120,23 @@ public class player : MonoBehaviour
 
     public void AttributeModified(Attribute attribute)
     {
-    
+
         Debug.Log(string.Concat(attribute.type, " was updated! Value is now ", attribute.value.ModifiedValue));
-        // if (string.Concat(attribute.type) == "Damage")
-        // {
-        //     Damage = attribute.value.ModifiedValue;
-        // }
-        // if (string.Concat(attribute.type) == "Health")
-        // {
-        //     Health = attribute.value.ModifiedValue;
-        // }
-        // if (string.Concat(attribute.type) == "Defense")
-        // {
-        //     Defense = attribute.value.ModifiedValue;
-        // }
-      damage.text = Damage.ToString();
-       
-        
+        if (string.Concat(attribute.type) == "Damage")
+        {
+            PlayerHitBox.damage = attribute.value.ModifiedValue;
+        }
+        if (string.Concat(attribute.type) == "Health")
+        {
+            Stats.phealth = attribute.value.ModifiedValue;
+        }
+        if (string.Concat(attribute.type) == "Defense")
+        {
+            Stats.pdefense = attribute.value.ModifiedValue;
+        }
+        damage.text = PlayerHitBox.damage.ToString();
+
+
     }
 
     private void OnApplicationQuit()

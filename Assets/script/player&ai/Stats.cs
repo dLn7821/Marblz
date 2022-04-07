@@ -12,36 +12,36 @@ public class Stats : MonoBehaviour
     public GameObject Char;
     public float health;
 
-public static float phealth;
+    public static float phealth;
     public float defense;
-public static float pdefense=2;
-    private  float curHealth;
-     private static float pcurHealth;
-    public void Check(Attribute attribute, player Player)
-    {
-        
-        if(Char.tag=="Player")
-        {
-        if (string.Concat(attribute.type) == "Health")
-        {
-            phealth += attribute.value.ModifiedValue;
-        }
-        if (string.Concat(attribute.type) == "Defense")
-        {
-            pdefense += attribute.value.ModifiedValue;
-        }
-        }
-    }
+    public static float pdefense;
+    private float curHealth;
+    private static float pcurHealth;
+    // public void Check(Attribute attribute, player Player)
+    // {
+
+    //     if (Char.tag == "Player")
+    //     {
+    //         if (string.Concat(attribute.type) == "Health")
+    //         {
+    //             phealth += attribute.value.ModifiedValue;
+    //         }
+    //         if (string.Concat(attribute.type) == "Defense")
+    //         {
+    //             pdefense += attribute.value.ModifiedValue;
+    //         }
+    //     }
+    // }
     private void Start()
     {
 
         curHealth = health;
-         pcurHealth = phealth;
+        pcurHealth = phealth;
 
     }
     private void Update()
     {
-         thealth.text=pcurHealth.ToString();
+        thealth.text = pcurHealth.ToString();
     }
 
     public void Damage(Transform edamageOBJ, float edamageAmount)
@@ -49,11 +49,11 @@ public static float pdefense=2;
         edamageOBJ.GetComponent<Stats>().TakeDamage(edamageAmount);
         Debug.Log("Health: " + curHealth);
     }
-     public void PDamage(Transform edamageOBJ, float edamageAmount)
+    public void PDamage(Transform edamageOBJ, float edamageAmount)
     {
         edamageOBJ.GetComponent<Stats>().TakeDamage(edamageAmount);
         Debug.Log("Health: " + pcurHealth);
-       
+
     }
     public void TakeDamage(float amount)
     {
@@ -68,7 +68,7 @@ public static float pdefense=2;
 
         }
     }
-     public void pTakeDamage(float amount)
+    public void pTakeDamage(float amount)
     {
         if (pdefense < amount)
         {
@@ -84,12 +84,12 @@ public static float pdefense=2;
     private void pDie()
     {
         dead.SetActive(true);
-         Time.timeScale = 0f;
+        Time.timeScale = 0f;
         Destroy(gameObject);
     }
     private void Die()
     {
-       
+
         Destroy(gameObject);
     }
 }
