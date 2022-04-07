@@ -11,7 +11,7 @@ public class PlayerHitBox : MonoBehaviour
         Debug.Log("b");
         if (other.gameObject.tag == "Stats")
         {
-            stats.Damage(other.transform, damage);
+            stats.PDamage(other.transform, damage+AddStats.damage);
             Debug.Log("a");
         }
     }

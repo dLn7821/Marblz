@@ -102,7 +102,7 @@ public class player : MonoBehaviour
             }
         }
     }
-    private void Update()
+    private void Update(Attribute attribute)
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -114,29 +114,13 @@ public class player : MonoBehaviour
             inventory.Load();
             equipment.Load();
         }
-        // Debug.Log("Player damage: " + PlayerHitBox.damage);
-        // Debug.Log("Player health: " + Stats.health);
     }
 
     public void AttributeModified(Attribute attribute)
     {
 
         Debug.Log(string.Concat(attribute.type, " was updated! Value is now ", attribute.value.ModifiedValue));
-        if (string.Concat(attribute.type) == "Damage")
-        {
-            PlayerHitBox.damage = attribute.value.ModifiedValue;
-        }
-        if (string.Concat(attribute.type) == "Health")
-        {
-            Stats.phealth = attribute.value.ModifiedValue;
-        }
-        if (string.Concat(attribute.type) == "Defense")
-        {
-            Stats.pdefense = attribute.value.ModifiedValue;
-        }
         damage.text = PlayerHitBox.damage.ToString();
-
-
     }
 
     private void OnApplicationQuit()
@@ -151,6 +135,7 @@ public class Attribute
 {
     [System.NonSerialized]
     public player parent;
+
     public Attributes type;
     public ModifiableInt value;
 

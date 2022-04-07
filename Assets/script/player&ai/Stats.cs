@@ -15,51 +15,32 @@ public class Stats : MonoBehaviour
     public static float phealth;
     public float defense;
     public static float pdefense;
+     
     private float curHealth;
-    private static float pcurHealth;
-    // public void Check(Attribute attribute, player Player)
-    // {
-
-    //     if (Char.tag == "Player")
-    //     {
-    //         if (string.Concat(attribute.type) == "Health")
-    //         {
-    //             phealth += attribute.value.ModifiedValue;
-    //         }
-    //         if (string.Concat(attribute.type) == "Defense")
-    //         {
-    //             pdefense += attribute.value.ModifiedValue;
-    //         }
-    //     }
-    // }
+    private  float pcurHealth;
     private void Start()
     {
-
+         pdefense+=AddStats.df;
         curHealth = health;
-        pcurHealth = phealth;
+        pcurHealth = phealth+AddStats.hp;
 
     }
-    private void Update()
+    public void enemyDamage(Transform edamageOBJ, float edamageAmount)
     {
-        thealth.text = pcurHealth.ToString();
-    }
-
-    public void Damage(Transform edamageOBJ, float edamageAmount)
-    {
-        edamageOBJ.GetComponent<Stats>().TakeDamage(edamageAmount);
-        Debug.Log("Health: " + curHealth);
-    }
-    public void PDamage(Transform edamageOBJ, float edamageAmount)
-    {
-        edamageOBJ.GetComponent<Stats>().TakeDamage(edamageAmount);
+        edamageOBJ.GetComponent<Stats>().pTakeDamage(edamageAmount);
         Debug.Log("Health: " + pcurHealth);
+    }
+    public void PDamage(Transform damageOBJ, float damageAmount)
+    {
+        damageOBJ.GetComponent<Stats>().TakeDamage(damageAmount);
+        Debug.Log("Health: " + curHealth);
 
     }
-    public void TakeDamage(float amount)
+    public void TakeDamage(float  damageAmount)
     {
-        if (defense < amount)
+        if (defense < damageAmount)
         {
-            curHealth -= (amount - defense);
+            curHealth -= (damageAmount - defense);
 
         }
         if (curHealth <= 0)
@@ -68,11 +49,11 @@ public class Stats : MonoBehaviour
 
         }
     }
-    public void pTakeDamage(float amount)
+    public void pTakeDamage(float edamageAmount)
     {
-        if (pdefense < amount)
+        if (pdefense <edamageAmount)
         {
-            pcurHealth -= (amount - pdefense);
+            pcurHealth -= (edamageAmount - pdefense);
 
         }
         if (pcurHealth <= 0)

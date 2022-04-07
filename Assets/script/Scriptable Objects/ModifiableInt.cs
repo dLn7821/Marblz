@@ -43,12 +43,15 @@ public class ModifiableInt
         ModifiedValue = baseValue + valueToAdd;
         if (ValueModified != null)
             ValueModified.Invoke();
+
+            
     }
 
     public void AddModifier(IModifier _modifier)
     {
         modifiers.Add(_modifier);
         UpdateModifiedValue();
+        
     }
     public void RemoveModifier(IModifier _modifier)
     {

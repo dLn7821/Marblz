@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyHitbox : MonoBehaviour
 {
-    public float damage;
+    public float edamage;
     public Stats stats;
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -12,8 +12,8 @@ public class EnemyHitbox : MonoBehaviour
         Debug.Log("bz");
         if (other.gameObject.tag == "Player")
         {
-            stats.Damage(other.transform, damage);
-            Debug.Log(damage);
+            stats.enemyDamage(other.transform, edamage);
+            Debug.Log("damage: "+edamage);
         }
     }
 }
