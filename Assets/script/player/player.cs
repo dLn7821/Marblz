@@ -11,7 +11,7 @@ public class player : MonoBehaviour
     public InventoryObject equipment;
     public Text damage;
 
-    public Text name;
+    public Text playername;
     public static int Damage;
     public static int Health;
     public static int Defense;
@@ -29,7 +29,7 @@ public class player : MonoBehaviour
         }
         if (DBManager.LoggedIn)
         {
-            name.text = DBManager.username;
+            playername.text = DBManager.username;
         }
     }
 
@@ -102,7 +102,7 @@ public class player : MonoBehaviour
             }
         }
     }
-    private void Update(Attribute attribute)
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -120,7 +120,7 @@ public class player : MonoBehaviour
     {
 
         Debug.Log(string.Concat(attribute.type, " was updated! Value is now ", attribute.value.ModifiedValue));
-        damage.text = PlayerHitBox.damage.ToString();
+      
     }
 
     private void OnApplicationQuit()

@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class AddStats : MonoBehaviour
 {
-    public static float damage;
+    
     public static float hp;
-    public static float df;
-    public void AttributeModified(Attribute attribute)
+  public static float damage;
+  
+    public void Update()
     {
-        if (string.Concat(attribute.type) == "Damage")
+            
+        if(string.Concat(GetComponent<Attribute>().type)=="Damage")
         {
-            damage += attribute.value.ModifiedValue;
+          Debug.Log("sebzés");
+        damage += GetComponent<Attribute>().value.modifiedValue;
         }
-        if (string.Concat(attribute.type) == "Health")
+        Debug.Log("hápé");
+         if(string.Concat(GetComponent<Attribute>().type)=="Health")
         {
-           hp += attribute.value.ModifiedValue;
+           hp += GetComponent<Attribute>().value.modifiedValue;
         }
-        if (string.Concat(attribute.type) == "Defense")
-        {
-           df += attribute.value.ModifiedValue;
-        }
-
-
     }
+    
+    
 }

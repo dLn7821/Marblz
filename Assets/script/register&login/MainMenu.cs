@@ -27,4 +27,13 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene(3);
     }
+    public void GoToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+       public void QuitGame()
+    {
+        DBManager.LogOut();
+        Application.Quit();
+    }
 }

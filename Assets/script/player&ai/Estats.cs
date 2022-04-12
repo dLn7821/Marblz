@@ -4,34 +4,29 @@ using UnityEngine;
 
 public class Estats : MonoBehaviour
 {
-    public float enemyhealth;
-
-    public float enemydefense;
-    private float enemycurHealth;
+    public float health;
+    public float  curHealth;
     private void Start()
     {
-        enemycurHealth = enemyhealth;
+        curHealth = health;
     }
 
-    public void enemyDamage(Transform damageOBJ, float damageAmount)
+    public void Damage(Transform damageOBJ, float damageAmount)
     {
-        damageOBJ.GetComponent<Estats>().enemyTakeDamage(damageAmount);
-        Debug.Log("Health: " + enemycurHealth);
+        damageOBJ.GetComponent<PStats>().pTakeDamage(damageAmount);
     }
-    public void enemyTakeDamage(float amount)
+
+    public void eTakeDamage(float Amount)
     {
-        if (enemydefense < amount)
-        {
-            enemycurHealth -= (amount - enemydefense);
-        }
-        if (enemycurHealth <= 0)
+        curHealth -= Amount;
+        if (curHealth <= 0)
         {
             Die();
-
         }
     }
     private void Die()
     {
         Destroy(gameObject);
     }
+
 }

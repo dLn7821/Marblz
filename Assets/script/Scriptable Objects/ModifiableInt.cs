@@ -11,7 +11,7 @@ public class ModifiableInt
     public int BaseValue { get { return baseValue; } set { baseValue = value; UpdateModifiedValue(); } }
 
     [SerializeField]
-    private int modifiedValue;
+    public int modifiedValue;
     public int ModifiedValue { get { return modifiedValue; } private set { modifiedValue = value; } }
 
     public List<IModifier> modifiers = new List<IModifier>();

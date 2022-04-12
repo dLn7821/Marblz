@@ -17,7 +17,6 @@ public enum Attributes
 {
     Damage,
     Health,
-    Defense
 }
 [CreateAssetMenu(fileName = "New Item", menuName = "Inventory System/Items/item")]
 public class ItemObject : ScriptableObject
