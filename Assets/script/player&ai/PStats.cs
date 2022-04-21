@@ -5,11 +5,11 @@ using UnityEngine;
 public class PStats : MonoBehaviour
 {
     public GameObject dead;
-    public float health;
-    public float curHealth;
+    public static float health = 10;
+    public static float curHealth;
     private void Start()
     {
-        curHealth =health+AddStats.hp;
+        curHealth = health + AddStats.hp;
 
     }
     public void Damage(Transform damageOBJ, float damageAmount)
@@ -25,8 +25,8 @@ public class PStats : MonoBehaviour
             Die();
         }
     }
-  
-    
+
+
     private void Die()
     {
         dead.SetActive(true);

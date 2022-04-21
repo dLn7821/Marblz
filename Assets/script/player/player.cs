@@ -120,7 +120,13 @@ public class player : MonoBehaviour
     {
 
         Debug.Log(string.Concat(attribute.type, " was updated! Value is now ", attribute.value.ModifiedValue));
-      
+        if (attribute.type.ToString() == "Health")
+        {
+            print("Health is now " + attribute.value.ModifiedValue);
+            PStats.health += (int)attribute.value.ModifiedValue;
+        }
+
+
     }
 
     private void OnApplicationQuit()
@@ -146,6 +152,7 @@ public class Attribute
     }
     public void AttributeModified()
     {
+        Debug.Log(string.Concat(type, value.ModifiedValue));
         parent.AttributeModified(this);
     }
 }

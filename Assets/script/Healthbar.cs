@@ -17,15 +17,15 @@ public class Healthbar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(slider.value <=slider.minValue)
+        if (slider.value <= slider.minValue)
         {
-            fillImage.enabled=false;
+            fillImage.enabled = false;
         }
-        if(slider.value > slider.minValue && !fillImage.enabled)
+        if (slider.value > slider.minValue && !fillImage.enabled)
         {
-            fillImage.enabled=true;
+            fillImage.enabled = true;
         }
-        float fillValue= playerHealth.curHealth / playerHealth.health;
+        float fillValue = PStats.curHealth / PStats.health;
         slider.value = fillValue;
     }
 }
