@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
-
+using TMPro;
 public class registration : MonoBehaviour
 {
-    public InputField nameField;
-    public InputField passwordField;
-
+    public TMP_InputField nameField, passwordField;
     public Button submitButton;
     public void CallRegister()
     {

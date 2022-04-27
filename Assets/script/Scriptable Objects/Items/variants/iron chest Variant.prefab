@@ -82,7 +82,7 @@ PrefabInstance:
     - target: {fileID: 1583968669692856333, guid: a3a194bc8f55e4c49a26d9b354aef0e8,
         type: 3}
       propertyPath: m_Name
-      value: iron chest
+      value: iron chest Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3a194bc8f55e4c49a26d9b354aef0e8, type: 3}

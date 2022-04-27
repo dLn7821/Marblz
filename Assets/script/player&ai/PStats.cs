@@ -9,7 +9,7 @@ public class PStats : MonoBehaviour
     public static float curHealth;
     private void Start()
     {
-        curHealth = health + AddStats.hp;
+        curHealth = health;
 
     }
     public void Damage(Transform damageOBJ, float damageAmount)

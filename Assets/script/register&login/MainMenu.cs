@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 public class MainMenu : MonoBehaviour
 {
-    public Text playerDisplay;
+    public TMP_Text playerDisplay;
     private void Start()
     {
-        if(DBManager.LoggedIn)
+        if (DBManager.LoggedIn)
         {
-            playerDisplay.text = "Player: " +DBManager.username;
+            playerDisplay.SetText("Logged in as: " + DBManager.username, true);
         }
     }
     public void GoToRegister()
@@ -31,7 +32,7 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
-       public void QuitGame()
+    public void QuitGame()
     {
         DBManager.LogOut();
         Application.Quit();

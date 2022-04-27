@@ -37,6 +37,7 @@ public class Estats : MonoBehaviour
     }
     private void Die()
     {
+        DBManager.KillCount += 1;
         Destroy(gameObject);
     }
     public void ObjectDropItem()

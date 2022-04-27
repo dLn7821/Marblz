@@ -3,14 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class player : MonoBehaviour
 {
 
     public InventoryObject inventory;
     public InventoryObject equipment;
     public Text damage;
-
+    public TMP_Text killcount;
     public Text playername;
     public static int Damage;
     public static int Health;
@@ -114,6 +114,7 @@ public class player : MonoBehaviour
             inventory.Load();
             equipment.Load();
         }
+        killcount.SetText("Killcount: " + DBManager.KillCount, true);
     }
 
     public void AttributeModified(Attribute attribute)

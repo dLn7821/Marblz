@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+using TMPro;
 public class Login : MonoBehaviour
 {
-    public InputField nameField;
-    public InputField passwordField;
-
+    public TMP_InputField nameField, passwordField;
     public Button submitButton;
     public void CallLogin()
     {
@@ -20,6 +19,7 @@ public class Login : MonoBehaviour
         form.AddField("name", nameField.text);
         form.AddField("password", passwordField.text);
         UnityWebRequest request = UnityWebRequest.Post("https://mrblz.000webhostapp.com/login.php", form);
+        request.timeout = 5;
         yield return request.SendWebRequest();
         if (request.downloadHandler.text[0] == '0')
         {
